@@ -15,3 +15,20 @@ var lengthOfLastWord = function(s) {
 
 //should output 5
 lengthOfLastWord("Hello World");
+
+var twoSum = function(nums, target) {
+    let obj = {};
+    for (let i = 0; i < nums.length; i++){
+        obj[nums[i]] = i;
+    }
+    for (let i = 0; i < nums.length; i++){
+        let secondNum = target - nums[i];
+        if (obj[secondNum] && obj[secondNum] !== i){
+            console.log([i, obj[secondNum]]);
+            return [i, obj[secondNum]];
+        }
+    }
+};
+
+//should output [0,1]
+twoSum([2,7,11,15], 9);
