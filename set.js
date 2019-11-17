@@ -32,3 +32,34 @@ var twoSum = function(nums, target) {
 
 //should output [0,1]
 twoSum([2,7,11,15], 9);
+
+var reverse = function(x) {
+    // if (x > Math.pow(2, 31)-1 || x < Math.pow(-2,31)){
+    //     return 0;
+    // }
+    let negativeNumber = false;
+    if (x < 0) {
+        negativeNumber = true;
+        x *= -1;
+    }
+    let digit;
+    let ret = 0;
+    while (x > 0){
+        digit = x % 10;
+        ret *= 10;
+        ret += digit;
+        x = Math.floor(x / 10);
+    }
+    if (negativeNumber){
+        ret *= -1;
+    }
+    if (ret > Math.pow(2, 31)-1 || ret < Math.pow(-2,31)){
+        return 0;
+    }
+    console.log(ret);
+    return ret;
+};
+
+reverse(123);
+reverse(-123);
+reverse(120);
