@@ -101,3 +101,14 @@ n4.next = n5;
 n5.next = n6;
 
 addTwoNumbers(n1, n4);
+
+var isPalindrome = function(x) {
+    let org = x.toString().split("").join("");
+    let rev = x.toString().split("").reverse().join("");
+    console.log(rev === org);
+    return rev === org;
+};
+
+isPalindrome(121);
+isPalindrome(-121);
+isPalindrome(10);
