@@ -24,3 +24,28 @@ n1.next = n2;
 n2.next = n3;
 
 deleteDuplicates(n1);
+
+let test = null;
+console.log(test != null);
+console.log(test !== null);
+console.log(test == null);
+console.log(test === null);
+console.log(!null);
+
+var merge = function(nums1, m, nums2, n) {
+  let length = m + n;
+  
+  m--;
+  n--;
+  while (length--){
+      if (nums1[m]>=nums2[n] || n < 0){
+          nums1[length] = nums1[m--];
+      } else {
+          nums1[length] = nums2[n--];
+      }
+      
+  }
+  console.log(nums1);
+};
+
+merge([1,4,7], 3, [2,3,6], 3);
