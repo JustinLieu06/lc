@@ -71,3 +71,31 @@ let root = new TreeNode(1);
 root.right = new TreeNode(2);
 
 console.log(maxDepth(root));
+
+function example() {
+  const arr = [];
+  return function(num) {
+    arr.push(num);
+    return arr;
+  }
+}
+
+const a = example();
+a(5);
+a(6);
+
+const b = example();
+b(1);
+b(2);
+
+// What is the return value of the following line?
+console.log(a(10));
+
+function timeAndCount() {
+  for (var i = 0; i < 3; i++) {
+    setTimeout(() => {
+      console.log(i);
+    }, 1000);
+  }
+}
+console.log(timeAndCount());
