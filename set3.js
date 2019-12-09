@@ -27,3 +27,16 @@ var levelOrderBottom = function(root) {
   }
   return ret;
 };
+
+var maxProfit = function(prices) {
+  var profit = 0;
+  var min = Infinity;
+  for(var i = 0; i < prices.length; i++){
+      if(min > prices[i]) min = prices[i];
+      else if(min < prices[i]){
+          profit += prices[i] - min;
+          min = prices[i];
+      } 
+  }
+  return profit;
+};
