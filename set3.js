@@ -56,3 +56,22 @@ var generate = function(numRows) {
   }
   return result;
 };
+
+var deleteDuplicates = function(head) {
+    
+  if(!head) {
+      return head;
+  }
+ var node = head.next;
+ var prev = head;
+ 
+ while (node) {
+     if (node.val !== prev.val) {
+         prev.next = node;
+         prev = node;
+     }
+     node = node.next; 
+ }
+ prev.next = null;
+ return head 
+};
