@@ -96,3 +96,19 @@ var lengthOfLastWord = function(s) {
   }
   return 0;
 };
+
+var maxProfit = function(prices) {
+    let ret = 0;
+    let arr = [];
+    for (let i = 0; i < prices.length - 1; i++){
+        let max = 0;
+        for (let j = i + 1; j < prices.length; j++){
+            if (prices[j] > max) max = prices[j];
+        }
+        arr.push(max - prices[i]);
+    }
+    for (let i = 0; i < arr.length; i++){
+        if (arr[i] > ret) ret = arr[i];
+    }
+    return ret;
+};
