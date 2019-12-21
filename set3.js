@@ -85,3 +85,14 @@ var rob = function(nums) {
   }
   return totals[totals.length - 1];
 };
+
+var lengthOfLastWord = function(s) {
+  if (s.length === 0) return 0;
+  let arr = s.split(" ");
+  let i = arr.length - 1;
+  while (i >= 0){
+      if (arr[i].length > 0) return arr[i].length;
+      i--;
+  }
+  return 0;
+};
