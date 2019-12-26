@@ -184,3 +184,16 @@ MinStack.prototype.getMin = function() {
 };
 
 // grep -w '\(^[0-9]\{3\}\-[0-9]\{3\}\-[0-9]\{4\}\)\|\(^([0-9]\{3\})\s[0-9]\{3\}\-[0-9]\{4\}\)' file.txt
+
+function twoNumberSum(array, targetSum) {
+	let ret = [];
+  for (let i = 0; i < array.length - 1; i++){
+		for (let j = i+1; j < array.length; j++){
+			if (array[i] + array[j] === targetSum) {
+				ret.push(array[i]);
+				ret.push(array[j]);
+			}
+		}
+	}
+	return ret;
+}
