@@ -182,3 +182,5 @@ MinStack.prototype.getMin = function() {
         return this.stack[this.stack.length - 1].min
     }
 };
+
+// grep -w '\(^[0-9]\{3\}\-[0-9]\{3\}\-[0-9]\{4\}\)\|\(^([0-9]\{3\})\s[0-9]\{3\}\-[0-9]\{4\}\)' file.txt
