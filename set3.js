@@ -197,3 +197,25 @@ function twoNumberSum(array, targetSum) {
 	}
 	return ret;
 }
+
+function twoNumberSum(array, targetSum) {
+	let arr = array.sort(function(a, b){return a-b});
+	let left = 0;
+	let right = arr.length - 1;
+	let ret = [];
+	while (left < right){
+		let curr = arr[left] + arr[right];
+		if (curr === targetSum) {
+			ret.push(arr[left]);
+			ret.push(arr[right]);
+			return ret;
+		}
+		else if (curr < targetSum){
+			left++;
+		}
+		else {
+			right--;
+		}
+	}
+	return ret;
+}
