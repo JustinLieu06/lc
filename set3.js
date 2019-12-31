@@ -263,3 +263,18 @@ function findClosestValueInBst(tree, target) {
 	helper(node.left, newRunningSum, sums);
 	helper(node.right, newRunningSum, sums);
 }
+
+function binarySearch(array, target) {
+      if (array.length < 1) return -1;
+      
+      let midIdx = Math.floor(array.length/2);
+      let mid = array[midIdx];
+      if (mid === target) {
+          return midIdx;
+      } else if (mid < target) {
+          return binarySearch(array.slice(0, midIdx), target)
+      } else {
+          let temp = binarySearch(array.slice(midIdx+1), target);
+          return temp === -1 ? -1 : temp + midIdx + 1
+      }
+  }
