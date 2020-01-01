@@ -278,3 +278,16 @@ function binarySearch(array, target) {
           return temp === -1 ? -1 : temp + midIdx + 1
       }
   }
+
+  function productSum(array, multiplier = 1) {
+	let s = 0
+	for (let el of array) {
+		if (Array.isArray(el)) {
+			s += productSum(el, multiplier+1)
+		} else {
+			s += el				
+		}
+	}
+	
+	return s * multiplier;
+}
