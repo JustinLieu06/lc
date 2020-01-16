@@ -291,3 +291,29 @@ function binarySearch(array, target) {
 	
 	return s * multiplier;
 }
+
+function findThreeLargestNumbers(array) {
+    // Write your code here.
+      if (array.length < 3) return [];
+      
+      let first, second, third;
+      first = Number.MIN_SAFE_INTEGER;
+      second = Number.MIN_SAFE_INTEGER;
+      third = Number.MIN_SAFE_INTEGER;
+      
+      
+      for (let i = 0; i < array.length; i++) {
+          if (array[i] >= first) {
+              third = second;
+              second = first
+              first = array[i];
+          } else if (array[i] >= second) {
+              third = second;
+              second = array[i];
+          } else if (array[i] > third) {
+              third = array[i]
+          }
+      }
+      
+      return [third,second,first]
+  }
