@@ -327,3 +327,31 @@ function findThreeLargestNumbers(array) {
     }
     return ret;
 };
+
+function getShortestUniqueSubstring(arr, str) {
+    let headIndex = 0, result = "", uniqueCounter = 0, countMap = {};
+    for (let i = 0; i < arr.length; i++){
+      if (countMap[arr[i]] === undefined) countMap[arr[i]] = 0;
+    }
+    for (let tailIndex = 0; tailIndex < str.length; tailIndex++){
+      let tailChar = str[tailIndex];
+      if (countMap[tailChar] === undefined) continue;
+      let tailCount = countMap[tailChar];
+      if (tailCount === 0) uniqueCounter++;
+      countMap[tailChar]++;
+      
+      while (uniqueCounter === arr.length){
+        let tempLength = tailIndex - headIndex + 1;
+        if (tempLength === arr.length) return str.substring(headIndex, tailIndex+1);
+        if (result === "" || tempLength < result.length) result = str.substring(headIndex, tailIndex+1);
+        let headChar = str[headIndex];
+        if (countMap[headChar]){
+          let headCount = countMap[headChar] - 1;
+          if (headCount === 0) uniqueCounter--;
+          countMap[headChar] = headCount;
+        }
+        headIndex++;
+      }
+    }
+    return result;
+  }
