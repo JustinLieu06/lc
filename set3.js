@@ -317,3 +317,13 @@ function findThreeLargestNumbers(array) {
       
       return [third,second,first]
   }
+
+  var findDuplicates = function(nums) {
+    let ret = [];
+    for (let i = 0; i < nums.length; i++){
+        let curr = Math.abs(nums[i]);
+        if (nums[curr - 1] < 0) ret.push(curr);
+        else nums[curr - 1] *= -1;
+    }
+    return ret;
+};
