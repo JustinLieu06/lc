@@ -328,6 +328,7 @@ function findThreeLargestNumbers(array) {
     return ret;
 };
 
+//pramp problem
 function getShortestUniqueSubstring(arr, str) {
     let headIndex = 0, result = "", uniqueCounter = 0, countMap = {};
     for (let i = 0; i < arr.length; i++){
