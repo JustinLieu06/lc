@@ -370,3 +370,10 @@ function getShortestUniqueSubstring(arr, str) {
       }
       return ways[n];
   }
+
+  var isPowerOfTwo = function(n) {
+    while (n >= 2) {
+        n = n/2;
+    }
+    return n===1?true: false;
+};
