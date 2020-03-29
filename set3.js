@@ -377,6 +377,4 @@ var isPowerOfTwo = function(n) {
     }
     return n===1?true: false;
 };
-//update
-
-//todo
+//rotten oranges todo
