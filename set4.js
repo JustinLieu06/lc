@@ -31,7 +31,17 @@
 
 // console.log(Math.floor(12/10));
 function fib(n){
-  if (n === 0 || n == 1) return n;
-  return fib(n-1) + fib(n-2);
+  // if (n === 0 || n == 1) return n;
+  // return fib(n-1) + fib(n-2);
+  let prev = 0;
+  let curr = 1;
+  let i = 0;
+  while (i < n-1){
+    temp = curr;
+    curr = prev+curr;
+    prev = temp;
+    i++;
+  }
+  return curr;
 }
 console.log(fib(6));
