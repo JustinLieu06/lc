@@ -33,15 +33,25 @@
 function fib(n){
   // if (n === 0 || n == 1) return n;
   // return fib(n-1) + fib(n-2);
-  let prev = 0;
-  let curr = 1;
-  let i = 0;
-  while (i < n-1){
-    temp = curr;
-    curr = prev+curr;
-    prev = temp;
-    i++;
-  }
-  return curr;
+
+  // let prev = 0;
+  // let curr = 1;
+  // let i = 0;
+  // while (i < n-1){
+  //   temp = curr;
+  //   curr = prev+curr;
+  //   prev = temp;
+  //   i++;
+  // }
+  // return curr;
+
+  return helper(n, {});
+}
+
+function helper(n, memo){
+  memo = memo || {};
+  if (memo[n]) return memo[n];
+  if (n <= 1) return n;
+  return memo[n] = helper(n-1, memo) + helper(n-2, memo);
 }
 console.log(fib(6));
