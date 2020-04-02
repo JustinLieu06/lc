@@ -54,4 +54,16 @@ function helper(n, memo){
   if (n <= 1) return n;
   return memo[n] = helper(n-1, memo) + helper(n-2, memo);
 }
-console.log(fib(6));
+// console.log(fib(6));
+
+function subStrings(str){
+  let ret = [];
+  for (let i = 0; i < str.length; i++){
+    for (let j = i + 1; j <= str.length; j++){
+      ret.push(str.slice(i, j));
+    }
+  }
+  return ret;
+}
+
+console.log(subStrings("abcdef"));
