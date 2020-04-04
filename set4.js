@@ -66,4 +66,49 @@ function subStrings(str){
   return ret;
 }
 
-console.log(subStrings("abcdef"));
+// console.log(subStrings("abcdef"));
+function longestpalindrome(str){
+  // let ret = "";
+  // for (let i = 0; i < str.length; i++){
+
+  // }
+  // return ret;
+  let maxLength = 1;
+  let start = 0, len = str.length;
+  let low, high;
+  for (let i = 1; i < len; ++i){
+    low = i - 1;
+    high = i;
+    while ( low >= 0 && high < len && str[low] === str[high] ){
+      if (high - low + 1 > maxLength){
+        start = low;
+        maxLength = high - low + 1;
+      }
+      --low;
+      ++high;
+    }
+    low = i - 1;
+    high = i + 1;
+    while ( low >= 0 && high < len && str[low] === str[high]){
+      if (high - low + 1 > maxLength){
+        start = low;
+        maxLength = high - low + 1;
+      }
+      --low;
+      ++high;
+    }
+  }
+  return maxLength;
+}
+console.log(longestpalindrome("abczxzc"));
+
+var maxSubArray = function(nums) {
+  if (nums.length < 1) return 0;
+  let max = nums[0];
+  let arr = [nums[0]];
+  for (let i = 1; i < nums.length; i++){
+      arr[i] = Math.max(nums[i], nums[i]+arr[i-1]);
+      max = Math.max(max, arr[i]);
+  }
+  return max;
+};
