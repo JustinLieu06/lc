@@ -112,3 +112,19 @@ var maxSubArray = function(nums) {
   }
   return max;
 };
+
+var containsDuplicate = function(nums) {
+  let hash = {};
+  let ret = false;
+  for (let i = 0; i < nums.length; i++){
+      let ele = nums[i];
+      if (hash[ele] === undefined) hash[ele] = 1;
+      else hash[ele] += 1;
+  }
+  Object.keys(hash).forEach(key => {
+      if (hash[key] > 1) {
+          ret = true;
+      }
+  });
+  return ret;
+};
