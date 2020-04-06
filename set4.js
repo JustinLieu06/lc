@@ -79,7 +79,7 @@ function longestpalindrome(str){
     let len1 = expandFromMiddle(str, i, i);
     let len2 = expandFromMiddle(str, i, i+1);
     let len = Math.max(len1, len2);
-    if (len < end - start){
+    if (len > end - start){
       start = i - Math.floor((len - 1) / 2);
       end = i + Math.floor(len/2);
     }
