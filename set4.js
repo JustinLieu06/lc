@@ -73,32 +73,27 @@ function longestpalindrome(str){
 
   // }
   // return ret;
-  let maxLength = 1;
-  let start = 0, len = str.length;
-  let low, high;
-  for (let i = 1; i < len; ++i){
-    low = i - 1;
-    high = i;
-    while ( low >= 0 && high < len && str[low] === str[high] ){
-      if (high - low + 1 > maxLength){
-        start = low;
-        maxLength = high - low + 1;
-      }
-      --low;
-      ++high;
-    }
-    low = i - 1;
-    high = i + 1;
-    while ( low >= 0 && high < len && str[low] === str[high]){
-      if (high - low + 1 > maxLength){
-        start = low;
-        maxLength = high - low + 1;
-      }
-      --low;
-      ++high;
+  if (str === null || str.length < 1) return "";
+  let start = 0, end = 0;
+  for (let i = 0; i < str.length; i++){
+    let len1 = expandFromMiddle(str, i, i);
+    let len2 = expandFromMiddle(str, i, i+1);
+    let len = Math.max(len1, len2);
+    if (len < end - start){
+      start = i - Math.floor((len - 1) / 2);
+      end = i + Math.floor(len/2);
     }
   }
-  return maxLength;
+  return str.substring(start, end+1);
+}
+
+function expandFromMiddle(s, left, right) {
+  if (s === null || left > right) return 0;
+  while (left >= 0 && right < s.length && s[left] === s[right]){
+    left--;
+    right++;
+  }
+  return right - left - 1;
 }
 console.log(longestpalindrome("abczxzc"));
 
