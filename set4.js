@@ -123,3 +123,43 @@ var containsDuplicate = function(nums) {
   });
   return ret;
 };
+
+function rottenOranges(grid){
+  let height = grid.length, width = grid[0].length;
+  let fresh = 0;
+  let queue = [];
+  for (let i = 0; i < height; i++){
+    for (let j = 0; j < width; j++){
+      if (grid[i][j] === 1) fresh++;
+      if (grid[i][j] === 2) queue.push([i, j]);
+    }
+  }
+  let minutes = 0;
+  while (queue.length){
+    for (let i = 0; i < queue.length; i++){
+      const [x, y] = queue.shift();
+      if (x - 1 >= 0 && grid[x-1][y] === 1){
+        grid[x-1][y] = 2;
+        fresh--;
+        queue.push([x-1, y]);
+      }
+      if (x + 1 < grid.length && grid[x+1][y] === 1){
+        grid[x+1][y] = 2;
+        fresh--;
+        queue.push([x+1, y]);
+      }
+      if (y - 1 >= 0 && grid[x][y-1] === 1){
+        grid[x][y-1] = 2;
+        fresh--;
+        queue.push([x, y-1]);
+      }
+      if (y + 1 < grid[0].length && grid[x][y+1] === 1){
+        grid[x][y+1] = 2;
+        fresh--;
+        queue.push([x, y+1]);
+      }
+    }
+    if (queue.length > 0) minutes++;
+  }
+  return fresh === 0 ? minutes : -1
+}
