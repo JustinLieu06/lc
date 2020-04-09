@@ -177,3 +177,21 @@ var subarraySum = function(nums, k) {
   }
   return count;
 };
+
+function arrayOfArrayProducts(arr) {
+  
+  
+  if (arr.length === 1 || arr.length === 0) return [];
+  let left = [1], right = [], ret = [];
+  right[arr.length - 1] = 1;
+  for (let i = 0; i < arr.length - 1; i++){
+    left.push(left[i] * arr[i]);
+  }
+  for (let i = arr.length - 2; i >= 0; i--){
+    right[i] = arr[i+1] * right[i+1]
+  }
+  for (let i = 0; i < arr.length; i++){
+    ret.push(left[i] * right[i]);
+  }
+  return ret;
+}
