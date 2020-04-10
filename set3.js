@@ -419,3 +419,34 @@ var orangesRotting = function(grid) {
   }
   return fresh === 0 ? minute : -1;
 };
+
+function reverseSentence(str){
+    str = reverseString(str);
+    let temp = '';
+    let ret = '';
+    for (let i = 0; i < str.length; i++){
+        if (i === str.length - 1){
+            temp += str[i];
+            ret += reverseString(temp);
+        }
+        else if (str[i] === ' '){
+            temp += str[i];
+            ret += reverseString(temp);
+            temp = '';
+        } 
+        else {
+            temp += str[i];
+        }
+    }
+    return ret;
+}
+
+function reverseString(str){
+    let ret = "";
+    for (let i = str.length - 1; i >= 0; i--){
+        ret += str[i];
+    }
+    return ret;
+}
+
+console.log(reverseSentence('the fox jumped'));
