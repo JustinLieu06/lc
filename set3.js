@@ -450,3 +450,37 @@ function reverseString(str){
 }
 
 console.log(reverseSentence('the fox jumped'));
+
+var groupAnagrams = function(strs) {
+    let ret = [];
+    for (let i = 0; i < strs.length; i++){
+        let alreadyAdded = false;
+        for (let j = 0; j < ret.length; j++){
+            if (areAnagrams(ret[j][0], strs[i])){
+                ret[j].push(strs[i]);
+                alreadyAdded = true;
+                break;
+            }
+        }
+        if (!alreadyAdded) ret.push([strs[i]]);
+    }
+    return ret;
+};
+
+function areAnagrams(str1, str2){
+    let hash = {};
+    let ret = true;
+    if (str1.length !== str2.length) return false;
+    for (let i = 0; i < str1.length; i++){
+        if (hash[str1[i]] === undefined) hash[str1[i]] = 1;
+        else hash[str1[i]] += 1;
+    }
+    for (let i = 0; i < str2.length; i++){
+        if (hash[str2[i]] === undefined) return false;
+        else hash[str2[i]] -= 1;
+    }
+    Object.keys(hash).forEach(key => {
+        if (hash[key] !== 0) ret = false;
+    });
+    return ret;
+}
