@@ -500,3 +500,15 @@ const groupAnagrams = strs => {
     
     return Object.values(map);
 };
+
+var countElements = function(arr) {
+    let hash = {};
+    let counter = 0;
+    for (let i = 0; i < arr.length; i++){
+        if (hash[arr[i]] === undefined) hash[arr[i]] = true;
+    }
+    for (let i = 0; i < arr.length; i++){
+        if (hash[arr[i]+1]) counter++;
+    }
+    return counter;
+};
