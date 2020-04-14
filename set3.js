@@ -512,3 +512,12 @@ var countElements = function(arr) {
     }
     return counter;
 };
+
+var groupAnagrams = function(strs) {
+    const map = {};
+    for (let s of strs){
+        const key = [...s].sort();
+        map[key] = map[key]? [...map[key], s] : [s];
+    }
+    return Object.values(map);
+};
