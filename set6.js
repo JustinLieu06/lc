@@ -19,3 +19,5 @@ var diameterOfBinaryTree = function(root) {
       return 1 + Math.max(left, right);
   }
 };
+
+//todo
