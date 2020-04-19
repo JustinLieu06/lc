@@ -6,7 +6,7 @@ var diameterOfBinaryTree = function(root) {
   
   return diameter;
   
-  function dfs(node, level) {
+  function dfs(node) {
       if (!node) return 0;
       
       const left = dfs(node.left);
@@ -20,4 +20,8 @@ var diameterOfBinaryTree = function(root) {
   }
 };
 
-//todo
+let maxProfit = (A, profit = 0) => {
+  for (let i = 1; i < A.length; ++i)
+      profit += Math.max(0, A[i] - A[i - 1]); // only count positive hillside steps 👆
+  return profit;
+};
