@@ -25,3 +25,21 @@ let maxProfit = (A, profit = 0) => {
       profit += Math.max(0, A[i] - A[i - 1]); // only count positive hillside steps 👆
   return profit;
 };
+
+function parentheses(n){
+  let res = [];
+  helper('', '', n, n, res);
+  function helper(str, value, left, right, res){
+    str += value;
+    // console.log([str, left, right]);
+    if (!left && !right) res.push(str);
+    if (left > right) return;
+
+    if (left) helper(str, '(', left - 1, right, res);
+    if (right) helper(str, ')', left, right - 1, res);
+ 
+  }
+  return res;
+}
+
+console.log(parentheses(3));
