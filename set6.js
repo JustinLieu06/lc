@@ -125,3 +125,16 @@ var middleNode = function(head) {
   }
   return slow;
 };
+
+var backspaceCompare = function(S, T) {
+  function reformat(str, ret = []){
+      str.split('').forEach(c => {
+          if (c !== '#') ret.push(c);
+          else {
+              if (ret.length) ret.pop();
+          }
+      });
+      return ret.join('');
+  }
+  return reformat(S) === reformat(T);
+};
