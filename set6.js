@@ -138,3 +138,10 @@ var backspaceCompare = function(S, T) {
   }
   return reformat(S) === reformat(T);
 };
+
+var stringShift = function(s, shift) {
+    if(A.length == 0 || B.length == 0 || A ===null || B === null) {
+        return false;
+    }
+    return (A + A).indexOf(B) !== -1;
+};
