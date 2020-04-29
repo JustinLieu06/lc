@@ -145,3 +145,36 @@ var stringShift = function(s, shift) {
     }
     return (A + A).indexOf(B) !== -1;
 };
+
+function TreeNode(val) {
+    this.val = val;
+    this.left = this.right = null;
+}
+
+let root = new TreeNode(1);
+root.left = new TreeNode(2);
+root.left.right = new TreeNode(5);
+root.left.right.left = new TreeNode(6);
+root.left.right.right = new TreeNode(7);
+root.right = new TreeNode(3);
+
+console.log(binaryTreePaths(root));
+
+function paths(root){
+ let ret = [];
+ if (root) dfs(root, []);
+ 
+ function dfs(node, path){
+   let pathCopy = [];
+   pathCopy = pathCopy.concat(path);
+   pathCopy.push(node.val); //[1] [1,2] [1,2,5]
+   if (node.left) dfs(node.left, pathCopy); //[1,2,5]
+   if (node.right) dfs(node.right, pathCopy); //[1]
+   if (!node.left && !node.right) {
+     if (pathCopy.length) ret.push(pathCopy.join('->'));
+   }
+   return;
+ }
+
+ return ret;
+}

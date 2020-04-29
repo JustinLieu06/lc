@@ -99,3 +99,4 @@ function timeAndCount() {
   }
 }
 console.log(timeAndCount());
+
