@@ -178,3 +178,19 @@ function paths(root){
 
  return ret;
 }
+
+var productExceptSelf = function(nums) {
+  if (!nums.length || nums.length === 1) return [];
+  let ret = [];
+  let product = 1;
+  for (let i = 0; i < nums.length; i++){
+      ret[i] = product;
+      product *= nums[i];
+  }
+  product = 1;
+  for (let i = nums.length - 1; i >= 0; i--){
+      ret[i] *= product;
+      product *= nums[i];
+  }
+  return ret;
+};
