@@ -194,3 +194,36 @@ var productExceptSelf = function(nums) {
   }
   return ret;
 };
+
+var checkValidString = function(s) {
+  let counter = 0;
+  let stars = 0;
+  for (let i = 0; i < s.length; i++){
+      const char = s[i];
+      if (char === ')') {
+          counter--;
+      }
+      else if (char === '(') {
+          counter++;
+      }
+      else {
+          stars++;
+      }
+      
+      if (counter < 0) {
+          while (counter !== 0 && stars){
+              counter++;
+              stars--;
+          }
+          if (counter !== 0) return false;
+      }
+  }
+  if (counter > 0){
+      while (counter !== 0 && stars){
+          counter--;
+          stars--;
+      }
+      if (counter !== 0) return false;
+  }
+  return true;
+};
