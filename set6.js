@@ -208,3 +208,18 @@ var checkValidString = function(s) {
     };
     return go();
 };
+
+function caesarCipherEncryptor(string, key) {
+  // Write your code here.
+	let alphabet = "abcdefghijklmnopqrstuvwxyz";
+	let res = "";
+	
+	for (let i = 0; i < string.length; i++) {
+		let oldLetter = string[i];
+		let oldIdx = alphabet.indexOf(oldLetter);
+		let newIdx = oldIdx + key;
+		let newLetter = alphabet[newIdx%26];
+		res += newLetter
+	}
+	return res;
+}
