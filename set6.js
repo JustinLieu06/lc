@@ -229,12 +229,13 @@ function spiralTraverse(arr){
   let startRow = 0, endRow = array.length - 1, startCol = 0, endCol = array[0].length - 1;
   
   while (startRow <= endRow && startCol <= endCol){
+
     for (let col = startCol; col <= endCol; col++){
       res.push(arr[startRow][col]);
     }
 
     for (let row = startRow + 1; row <= endRow; row++){
-      res.push(arr[row[endCol]]);
+      res.push(arr[row][endCol]);
     }
 
     for (let col = endCol - 1; col >= startCol; col--){
@@ -242,7 +243,7 @@ function spiralTraverse(arr){
       res.push(arr[endRow][col]);
     }
 
-    for (let row = endRow - 1; row >= startRow; row--){
+    for (let row = endRow - 1; row > startRow; row--){
       if (startCol === endCol) break;
       res.push(arr[row][startCol]);
     }

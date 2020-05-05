@@ -195,3 +195,72 @@ function arrayOfArrayProducts(arr) {
   }
   return ret;
 }
+
+function threeNumberSum(array, targetSum) {
+  let ret = [];
+  let uniqueRet = [];
+  let eleSet = new Set();
+  let uniqueTriplets = new Set();
+  for (let i = 0; i < array.length; i++){
+    eleSet.add(array[i]);
+  } //{1, 2, 3}
+  array.sort(function(a,b){ a - b});
+  for (let i = 0; i < array.length - 1; i++){
+    for (let j = i + 1; j < array.length; j++){
+      let tempSum = array[i] + array[j];
+      if (eleSet.has(targetSum - tempSum)){
+        let triplet = [array[i], array[j], targetSum-tempSum];
+        triplet.sort(function (a,b){
+          a - b;
+        });
+        ret.push(triplet);
+      }
+    }
+  }
+
+  uniqueRet.push(ret[0]);
+  for (let i = 1; i < ret.length; i++){
+    let triplet = ret[i];
+    for (let j = 0; j < uniqueRet; j++){
+      if (JSON.stringify(triplet) !== JSON.stringify(uniqueRet[j])) uniqueRet.push(triplet);
+    }
+  }
+  return uniqueRet;
+}
+
+function threeNumberSum(arr, targetSum) {
+	let resultArr = [];
+	let sorted = arr.sort((a,b) => a - b);
+	
+	for (let i = 0; i < sorted.length; i++) {
+			let currentNum = sorted[i];
+			let left = i + 1;
+			let right = sorted.length - 1;
+			while (left < right) {
+				let currentSum = arr[i] + sorted[left] + sorted[right];
+				
+				if (left >= right) {
+					break;
+				} else if (currentSum < targetSum) {
+					left++;
+				} else if (currentSum > targetSum) {
+					right--;
+				} else {
+					resultArr.push([currentNum, sorted[left], sorted[right]])
+					left++;	right--;
+				}
+			}
+	}
+	
+	return resultArr;
+}
+
+
+
+
+
+
+
+
+
+
