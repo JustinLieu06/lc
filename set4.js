@@ -266,6 +266,41 @@ function isSymmetric(root){
   return isMirror(root.left, root.right);
 }
 
+function isMirror(p, q){
+  let s1 = [p], s2 = [q];
+  while (s1.length > 0 || s2.length > 0){
+    let n1 = s1.pop(), n2 = s2.pop();
+    if (!n1 && !n2) continue;
+    if (!n1 || !n2 || n1.val !== n2.val) return false;
+    s1.push(n1.left); s1.push(n1.right);
+    s2.push(n2.right); s2.push(n2.left);
+  }
+  return true;
+}
+
+var search = function(nums, target) {
+  if (nums.length === 0) return -1;
+  
+  var index = -1,
+    head = 0,
+    tail = nums.length - 1,
+    mid;
+  
+  while (head <= tail) {
+    mid = Math.floor((head + tail) / 2);
+    if (nums[mid] === target) {
+      index = mid;
+      break;
+    } else if ((nums[head] <= target && target < nums[mid]) ||
+               (nums[head] > nums[mid] && (nums[head] <= target || target < nums[mid]))) {
+      tail = mid - 1;
+    } else {
+      head = mid + 1;
+    }
+  }
+  
+  return index;
+};
 
 
 
