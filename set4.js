@@ -302,6 +302,14 @@ var search = function(nums, target) {
   return index;
 };
 
+var toLowerCase = function(str) {
+  let diff = ('a'.charCodeAt(0) - 'A'.charCodeAt(0));
+  return Array
+      .from(str)
+      .map( ch => ( ch >= 'A' && ch <= 'Z' ) ? String.fromCharCode(ch.charCodeAt(0) + DIFF) : ch )
+      .join('');
+};
+
 
 
 
