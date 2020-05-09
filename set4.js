@@ -320,7 +320,7 @@ function longestPeak(array){
       continue;
     }
 
-    let leftIdx = i -2;
+    let leftIdx = i - 2;
     while(leftIdx >= 0 && array[leftIdx] < array[leftIdx + 1]){
       leftIdx--;
     }
@@ -329,7 +329,8 @@ function longestPeak(array){
       rightIdx++;
     }
 
-    const currentPeakLen = Math.max(len, currentPeakLen);
+    const currentPeakLen = rightIdx - leftIdx - 1;
+    len = Math.max(len, currentPeakLen);
     i = rightIdx;
   }
   return len;
