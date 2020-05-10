@@ -336,7 +336,15 @@ function longestPeak(array){
   return len;
 }
 
+function validateBst(tree){
+  return helper(tree, -Infinity, Infinity);
+}
 
+function helper(node, min, max){
+  if (node === null) return true;
+  if (node.value < min || node.value >= max) return false;
+  return helper(node.left, min, node.value) && helper(node.right, node.value, max);
+}
 
 
 
