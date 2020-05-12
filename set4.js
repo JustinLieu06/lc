@@ -369,7 +369,22 @@ function helper(node, min, max){
   return helper(node.left, min, node.value) && helper(node.right, node.value, max);
 }
 
+function invert(tree){
+  const queue = [tree];
+  while (queue.length){
+    const curr = queue.shift();
+    if (curr === null) continue;
+    swap(curr);
+    queue.push(curr.left);
+    queue.push(curr.right);
+  }
+}
 
+function swap(tree){
+  const left = tree.left;
+  tree.left = tree.right;
+  tree.right = left;
+}
 
 
 
