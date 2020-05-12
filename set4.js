@@ -386,5 +386,25 @@ function swap(tree){
   tree.right = left;
 }
 
+function lowestCost(arr){
+  for (let row = 1; row < arr.length; row++){
+    for (let col = 0; col < 3; col++){
+      let curr = arr[row][col];
+      let x, y;
+      if (col === 0){
+        x = 1; y = 2;
+      } else if (col === 1){
+        x = 0; y = 2;
+      } else {
+        x = 0; y = 1;
+      }
+      let first = arr[row-1][x];
+      let second = arr[row-1][y];
+      curr = Math.min(curr + first, curr + second);
+    }
+  }
+  return Math.min(...arr[arr.length - 1]);
+}
+
 
 
