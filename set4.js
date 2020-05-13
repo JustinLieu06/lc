@@ -406,5 +406,132 @@ function lowestCost(arr){
   return Math.min(...arr[arr.length - 1]);
 }
 
+We are given an array asteroids of integers representing asteroids in a row.
+For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.
+Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.
+Example 1: 
+Input:
+asteroids = [1,2,3,-3,4,-2] 
+
+Output = [1, 2, 4]
+
+Input:
+asteroids = [2,-4,1,3]
+Output = [-4,1,3]
+
+Input:
+asteroids = [4,-2,1,3]
+Output = [4,1,3]
+
+Note:
+The length of asteroids will be at most 10000.
+Each asteroid will be a non-zero integer in the range [-1000, 1000]
+
+asteroidsLeft(asteroids) 
+	initiate return array
+	iterate from first ele to second to last ele
+		compare curr ele with next ele
+			if both positive or both neg or (left is neg and right is pos) 
+				push curr ele into return array
+				increment iteration by one
+continue
+			else 
+if diff sizes 
+add the bigger of the absolute value of two ele
+increment twice
+	return asteroids
+runtime O(n)
+spacetime O(n)
+
+
+
+
+
+
+
+
+
+
+Input:
+asteroids = [1,2,3,-3,4,-2] 
+
+Output = [1, 2, 4]
+
+Input:
+asteroids = [2,-4,1,3]
+Output = [-4,1,3]
+
+Input:
+asteroids = [4,-2,1,3]
+Output = [4,1,3]
+
+Input:
+asteroids = [4,-2,1,-3]
+Output = [4,-3]
+
+[1,1,1,1,-5]
+Output = [-5]
+[5,-1,-1,-1,-1]
+Output = [5]
+
+function asteroidsLeft(asteroids){
+	let i = 0;
+	let ret = [];
+	while (i < asteroids.length - 1){
+		const curr = asteroids[i];
+		const next = asteroids[i+1];
+		if ((curr > 0 && next > 0) || (curr < 0 && next < 0) || (curr < 0 && next > 0)) {
+			ret.push(curr);
+			if (i === asteroids.length - 2) ret.push(next);
+			i++;
+		}
+//collisions 
+else {
+			const absCurr = Math.abs(curr);
+			const absNext = Math.abs(next);
+			if (absCurr !== absNext){
+				const max = Math.abs(absCurr, absNext);
+				if (max === Math.abs(curr)) ret.push(curr);
+				else ret.push(next); //[-4]
+			} 
+			i += 2;
+}
+	}
+	
+	return ret;
+}
+
+
+
+// [1,6,-5]
+// []
+
+
+// [-2,1,2,3,-4]
+// [-2,1,2]
+
+// Initiate a stack with the first value of the array 
+// Create flag and set to false
+// Loop over values in array(ele)
+// 	If ele is positive push it into the stack
+// 	Else
+// 		If the top of the stack is negative 
+// 			Push ele into stack 
+// 		Else
+// 			while(stack.length && top of stack is postive)
+// 				Pop of the top of stack and save it to a variable (top)
+// 				Compare abs values of top and ele
+// 					If top >  ele
+// 						Set flag to false
+// 						Push top into our stack 
+// 						Break
+// 					Else if ele > top
+// 						Set flag to true
+// 					Else
+// 						Break
+
+// If the flag is true then push ele into our stack
+
+// Return stack
 
 
