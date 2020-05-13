@@ -534,4 +534,33 @@ else {
 
 // Return stack
 
+function asteroidsLeft(asteroids){
+  if (asteroids.length < 0) return asteroids;
+  let stack = [asteroids[0]];
+  let flag = false;
+  for (let i = 1; i < asteroids.length; i++){
+    let ele = asteroids[i];
+    if (ele > 0) stack.push(ele);
+    else {
+      while (stack.length && stack[stack.length-1] > 0){
+        let top = stack.pop();
+        let absTop = Math.abs(top);
+        let absEle = Math.abs(ele);
+        if (absTop > absEle){
+          flag = false;
+          stack.push(top);
+          Break;
+        }
+        else if (absEle > absTop){
+          flag = true;
+        } else {
+          break;
+        }
+      }
+    }
+    if (flag) stack.push(ele);
+  }
+  return stack;
+}
 
+console.log(asteroidsLeft([1,1,1,1,-5]));
