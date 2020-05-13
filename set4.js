@@ -452,18 +452,23 @@ function asteroidsLeft(asteroids){
         if (absTop > absEle){
           flag = false;
           stack.push(top);
-          Break;
+          break;
         }
         else if (absEle > absTop){
           flag = true;
-        } else {
+        } 
+        else {
           break;
-        }
+        }      
       }
+      if (flag) stack.push(ele);
     }
-    if (flag) stack.push(ele);
   }
   return stack;
 }
 
-console.log(asteroidsLeft([1,1,1,1,-5]));
+console.log(asteroidsLeft([1,1,1,1,-5])); //[-5]
+console.log(asteroidsLeft([1,2,3,-3,4,-2])); //[1,2,4]
+console.log(asteroidsLeft([2,-4,1,3])); //[-4,1,3]
+console.log(asteroidsLeft([4,-2,1,3])); //[4,1,3]
+console.log(asteroidsLeft([5,-1,-1,-1,-6])); //[-6]
