@@ -467,8 +467,17 @@ function asteroidsLeft(asteroids){
   return stack;
 }
 
-console.log(asteroidsLeft([1,1,1,1,-5])); //[-5]
-console.log(asteroidsLeft([1,2,3,-3,4,-2])); //[1,2,4]
-console.log(asteroidsLeft([2,-4,1,3])); //[-4,1,3]
-console.log(asteroidsLeft([4,-2,1,3])); //[4,1,3]
-console.log(asteroidsLeft([5,-1,-1,-1,-6])); //[-6]
+// console.log(asteroidsLeft([1,1,1,1,-5])); //[-5]
+// console.log(asteroidsLeft([1,2,3,-3,4,-2])); //[1,2,4]
+// console.log(asteroidsLeft([2,-4,1,3])); //[-4,1,3]
+// console.log(asteroidsLeft([4,-2,1,3])); //[4,1,3]
+// console.log(asteroidsLeft([5,-1,-1,-1,-6])); //[-6]
+
+function iBinaryTree(root){
+  if (root === null) return root;
+  const left = root.left;
+  root.left = root.right;
+  root.right = left;
+  iBinaryTree(root.left);
+  iBinaryTree(root.right);
+}
