@@ -481,3 +481,9 @@ function iBinaryTree(root){
   iBinaryTree(root.left);
   iBinaryTree(root.right);
 }
+
+function branchSums(root){
+  const sums = [];
+  calculateBranchSums(root, 0, sums);
+  return sums;
+}
