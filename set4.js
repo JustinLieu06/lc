@@ -498,3 +498,9 @@ function calculateBranchSums(node, runningSum, sums){
   calculateBranchSums(node.left, newRunningSum, sums);
   calculateBranchSums(node.right, newRunningSum, sums);
 }
+
+function nodeDepths(root){
+  let answer = 0;
+  helper(root, answer);
+  return answer;
+}
