@@ -535,3 +535,20 @@ function shiftAndUpdate(array, num, idx){
     else array[i] = array[i+1];
   }
 }
+
+var maxDepth = function(root) {
+  if (root === null) return 0;
+  let answer = 1;
+  const stack = [{node: root, depth: 1}];
+  while (stack.length > 0){ //[ {node: 6, depth: 3}, {node: 7, depth: 3}, {node: 8, depth: 3}]
+    const {node, depth} = stack.pop();
+    if (node === null) continue;
+    if (node.children !== null){
+      for (let i = 0; i < node.children.length; i++){
+        if (node.children[i] !== null) stack.push({node: node.children[i], depth: depth + 1}); //node: 5, depth: 3
+      }
+    }
+    if (depth > answer) answer = depth; //3
+  }
+  return answer; //3
+};
