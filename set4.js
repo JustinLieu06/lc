@@ -552,3 +552,11 @@ var maxDepth = function(root) {
   }
   return answer; //3
 };
+
+function minHeightBst(array){
+  return constructBst(array, null, 0, array.length - 1);
+}
+
+function constructMinHeightBst(array, bst, startIdx, endIdx){
+  return bst;
+}
