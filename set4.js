@@ -557,6 +557,16 @@ function minHeightBst(array){
   return constructBst(array, null, 0, array.length - 1);
 }
 
-function constructMinHeightBst(array, bst, startIdx, endIdx){
+function constructBst(array, bst, startIdx, endIdx){
+  if (enddIdx < startIdx) return;
+  const midIdx = Math.floor((startIdx + endIdx)/2);
+  const valueToAdd = array[midIdx];
+  if (bst === null){
+    bst = new bst(valueToAdd);
+  } else {
+    bst.insert(valueToAdd);
+  }
+  constructBst(array, bst, startIdx, midIdx-1);
+  constructBst(array, bst, midIdx+1, endIdx);
   return bst;
 }
