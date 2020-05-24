@@ -570,3 +570,7 @@ function constructBst(array, bst, startIdx, endIdx){
   constructBst(array, bst, midIdx+1, endIdx);
   return bst;
 }
+
+function numberOfWays(n, denoms){
+  let ways = new Array(n+1).fill(0);
+}
