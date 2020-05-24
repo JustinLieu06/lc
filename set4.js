@@ -574,3 +574,27 @@ function constructBst(array, bst, startIdx, endIdx){
 function numberOfWays(n, denoms){
   let ways = new Array(n+1).fill(0);
 }
+
+function levenshtein(str1, str2){
+  const edits = [];
+  for (let i = 0; i < str2.length + 1){
+
+  }
+}
+
+function cycle(arr){
+  let visited = 0;
+  let idx = 0;
+  while (visited < array.length){
+    if (visited > 0 && Idx === 0) return false;
+    visited++;
+    idx = getNext(idx, arr);
+  }
+  return idx === 0;
+}
+
+function getNext(idx, arr){
+  const jump = arr[idx];
+  const nextIdx = (idx + jump) % array.length;
+  return nextIdx >= 0 ? nextIdx : nextIdx + array.length;
+}
